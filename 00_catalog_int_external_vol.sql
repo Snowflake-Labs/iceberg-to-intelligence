@@ -1,4 +1,4 @@
-USE ROLE AVALANCHE_ADMIN;
+USE ROLE avalanche_admin;
 USE WAREHOUSE compute_wh;
 
 CREATE CATALOG INTEGRATION IF NOT EXISTS blizzard_glue_catalog
