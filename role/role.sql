@@ -24,3 +24,8 @@ GRANT ROLE AVALANCHE_ADMIN TO USER IDENTIFIER($current_user_name);
 
 -- Verify grants
 SHOW GRANTS TO ROLE AVALANCHE_ADMIN;
+
+-- Create database and schema objects ahead of time
+USE ROLE AVALANCHE_ADMIN;
+CREATE DATABASE IF NOT EXISTS avalanche_db;
+CREATE SCHEMA IF NOT EXISTS avalanche_db.marketing;
