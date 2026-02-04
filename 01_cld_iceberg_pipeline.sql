@@ -50,10 +50,6 @@ ALTER TABLE avalanche_db.marketing.sanitized_campaign_events
 ALTER TABLE avalanche_db.marketing.sanitized_campaign_events
   MODIFY COLUMN customer_email SET MASKING POLICY avalanche_db.marketing.email_mask;
 
--- Update the target lag to 3 hours
-ALTER DYNAMIC TABLE avalanche_db.marketing.sanitized_campaign_events SET
-  TARGET_LAG = '3 hours';
-
 -- View governed data (AI_REDACT + masking policies applied)
 SELECT
     campaign_name,
@@ -71,31 +67,6 @@ WHERE
 LIMIT
     15;
 
--- Compare original vs governed data side-by-side
--- Compare notes: Original vs Redacted
-SELECT * FROM (
-  SELECT 'ORIGINAL NOTE' AS source, notes AS notes_column
-  FROM blizzard_data."blizzard_marketing"."campaign_events"
-  WHERE notes IS NOT NULL AND notes != ''
-  LIMIT 5
-)
-UNION ALL
-SELECT * FROM (
-  SELECT 'REDACTED VERSION', redacted_notes
-  FROM avalanche_db.marketing.sanitized_campaign_events
-  WHERE redacted_notes IS NOT NULL AND redacted_notes != ''
-  LIMIT 5
-);
-
--- Compare PII: Original vs Masked
-SELECT * FROM (
-  SELECT 'UNMASKED' AS source, customer_name, customer_email
-  FROM blizzard_data."blizzard_marketing"."campaign_events"
-  LIMIT 5
-)
-UNION ALL
-SELECT * FROM (
-  SELECT 'MASKED', customer_name, customer_email
-  FROM avalanche_db.marketing.sanitized_campaign_events
-  LIMIT 5
-);
+-- Update the target lag to 3 hours
+ALTER DYNAMIC TABLE avalanche_db.marketing.sanitized_campaign_events SET
+  TARGET_LAG = '3 hours';
