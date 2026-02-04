@@ -22,6 +22,9 @@ SET current_user_name = (SELECT CURRENT_USER());
 -- Grant the role to the current user
 GRANT ROLE avalanche_admin TO USER IDENTIFIER($current_user_name);
 
+-- Grant access to Marketplace dataset
+GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_PUBLIC_DATA_CORTEX_KNOWLEDGE_EXTENSIONS TO ROLE avalanche_admin;
+
 -- Verify grants
 SHOW GRANTS TO ROLE avalanche_admin;
 
