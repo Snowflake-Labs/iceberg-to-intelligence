@@ -16,8 +16,6 @@ USE SCHEMA "blizzard_marketing";
 
 SHOW TABLES;
 
-DESCRIBE TABLE "campaign_events";
-
 -- View a sample of the source data
 SELECT * FROM "campaign_events" LIMIT 10;
 
