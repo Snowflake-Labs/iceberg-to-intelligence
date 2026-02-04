@@ -9,4 +9,6 @@ DROP DATABASE IF EXISTS avalanche_db;
 -- Drops the catalog-linked database
 DROP DATABASE IF EXISTS blizzard_data;
 
+USE ROLE accountadmin;
+
 DROP ROLE IF EXISTS avalanche_admin;
