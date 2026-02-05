@@ -8,3 +8,5 @@ USE WAREHOUSE compute_wh;
 DROP DYNAMIC TABLE IF EXISTS avalanche_db.marketing.sanitized_campaign_events;
 
 DROP SEMANTIC VIEW IF EXISTS avalanche_db.marketing.campaign_analytics;
+
+-- Important: Be sure to go into the agent's settings and drop the BLIZZARD_MKTG_DATA tool. Be sure to save your changes.
