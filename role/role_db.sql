@@ -35,3 +35,5 @@ SHOW GRANTS TO ROLE avalanche_admin;
 USE ROLE avalanche_admin;
 CREATE DATABASE IF NOT EXISTS avalanche_db;
 CREATE SCHEMA IF NOT EXISTS avalanche_db.marketing;
+
+ALTER DATABASE avalanche_db SET ICEBERG_VERSION_DEFAULT=3;
