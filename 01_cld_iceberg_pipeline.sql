@@ -38,9 +38,12 @@ CREATE OR REPLACE MASKING POLICY avalanche_db.marketing.email_mask
 
 -- Create dynamic Iceberg table with Cortex Code. Redact notes with AI_REDACT:
 /*
-Create or replace a dynamic Iceberg table avalanche_db.marketing.sanitized_campaign_events from blizzard_data.blizzard_marketing.campaign_events with all columns. 
-Apply AI_REDACT to the notes column and name the column "redacted_notes". Set target lag to 8 hours. Set the external volume to the existing avalanche_s3_volume. 
-Set the base location to avalanche/sanitized_campaign_events. Add it to line 44 of this file. Keep the existing comment above it.
+Create or replace a dynamic Iceberg table avalanche_db.marketing.sanitized_campaign_events
+sourced from blizzard_data.blizzard_marketing.campaign_events. Include all source columns,
+but replace the notes column with AI_REDACT(notes) aliased as "redacted_notes". 
+Use Snowflake as the catalog, COMPUTE_WH as the warehouse, avalanche_s3_volume as the external volume, 
+'avalanche/sanitized_campaign_events' as the base location, and a target lag of 3 hours. 
+Create the database and schema if they don't already exist. Add it after the comment block at the end of the file, keeping the existing comment.
 */
 
 
