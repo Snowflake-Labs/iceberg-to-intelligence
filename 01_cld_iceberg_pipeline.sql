@@ -42,7 +42,7 @@ Create or replace a dynamic Iceberg table avalanche_db.marketing.sanitized_campa
 sourced from blizzard_data.blizzard_marketing.campaign_events. Include all source columns,
 but replace the notes column with AI_REDACT(notes) aliased as "redacted_notes". 
 Use Snowflake as the catalog, COMPUTE_WH as the warehouse, avalanche_s3_volume as the external volume, 
-'avalanche/sanitized_campaign_events' as the base location, and a target lag of 3 hours. 
+'avalanche/sanitized_campaign_events' as the base location, and a target lag of 8 hours. 
 Add it after the comment block at the end of the file, keeping the existing comment.
 */
 
