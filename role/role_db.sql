@@ -28,6 +28,8 @@ GRANT ROLE avalanche_admin TO ROLE accountadmin;
 -- Grant access to Marketplace dataset
 GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_PUBLIC_DATA_CORTEX_KNOWLEDGE_EXTENSIONS TO ROLE avalanche_admin;
 
+ALTER ACCOUNT SET AI_SQL_ERROR_HANDLING_USE_FAIL_ON_ERROR = FALSE;
+
 -- Verify grants
 SHOW GRANTS TO ROLE avalanche_admin;
 
